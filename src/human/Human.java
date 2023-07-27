@@ -5,13 +5,15 @@ import Vending.Automat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Human extends Actor {
+public class Human extends Actor implements ActorBehavoir {
     private double money; // деньги
     private Automat nearestAutomat; // ближайший автомат
-    public Human(String name, boolean makeOrder, boolean takeOrder, double money) {
-        super(name, makeOrder, takeOrder);
+
+    public Human(String name, double money) {
+        super(name);
         this.money = money;
     }
+
     public void findNearestautomat(){
         ArrayList<Product> allProduct = new ArrayList<>();
         allProduct.add(new Food("Snikers",80,5,80));
@@ -27,30 +29,44 @@ public class Human extends Actor {
         this.nearestAutomat = automat;
     }
     // дописать объем и температуру
-    @Override
-    public Order makeOrder(List<String> productHuman) { // проверяет список продуктов покупателя
-        ArrayList<Product> listShopping = new ArrayList<>();
-        Product shoppingProduct;
-        for (String nameProduct: productHuman) {
-            shoppingProduct = nearestAutomat.getProduct(nameProduct); // проверяет в ближайшем автомате наличие продкутов
-            if(shoppingProduct != null){ // если такие продукты есть в ближайшем автомате кладет в список
-                listShopping.add(shoppingProduct);
+
+    public Order makeOrder(List<String> productHuman) {
+        ArrayList<Product> shopingList = new ArrayList<>();
+        Product nameProduct;
+        for (String name: productHuman) {
+            nameProduct = nearestAutomat.getProduct(name);
+            if(nameProduct != null){
+                shopingList.add(nameProduct);
             }
         }
-        isMakeOrder = true; // меняет флаг на "есть заказ"
-        return nearestAutomat.createOrder(listShopping); //передает список продуктов для покупки для инициализации
+        setMakeOrder(true);
+        return nearestAutomat.createOrder(shopingList);
     }
     public void setMoney(double money) {this.money = money;}
-    @Override
-    public boolean isMakeOrder() {return false;}
-
-    @Override
-    public boolean isTakeOrder() {
+    public Automat getNearestAutomat() {return nearestAutomat;}
+    public void setNearestAutomat(Automat nearestAutomat) {
+        this.nearestAutomat = nearestAutomat;
+    }
+    public boolean isMakeOrder(boolean isMake) {return false;}
+    public boolean isTakeOrder(boolean isTake) {
         return false;
     }
-
     @Override
-    public Order makeOrder(ArrayList<Product> listProduct) {return null;}
+    public Order makeOrder(ArrayList<String> listOrderHuman) { // makeOrder true
+        ArrayList<Product> shoppingList = new ArrayList<>();
+        Product shopProduct;
+        for (String nameProduct : listOrderHuman) {
+            shopProduct=nearestAutomat.getProduct(nameProduct);
+            if (shopProduct != null){
+                shoppingList.add(shopProduct);
+            }
+        }
+        setMakeOrder(true);
+        return nearestAutomat.createOrder(shoppingList);
+    }
+
+
+
     @Override
     public void setMakeOrder(boolean isMade) {}
     @Override
@@ -58,4 +74,14 @@ public class Human extends Actor {
     public double getMoney() {return money;}
     public Automat getNearestVM() {return nearestAutomat;}
 
+    @Override
+    public String toString() {
+        return "Human{" +
+                "money=" + money +
+                ", nearestAutomat=" + nearestAutomat +
+                ", name='" + name + '\'' +
+                ", isMakeOrder=" + isMakeOrder +
+                ", isTakeOrder=" + isTakeOrder +
+                '}';
+    }
 }

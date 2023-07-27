@@ -1,14 +1,11 @@
 package human;
-
-import Vending.Product;
-
 import java.util.ArrayList;
 
 public interface ActorBehavoir {
 
-    boolean isMakeOrder();
-    boolean isTakeOrder();
+    boolean isMakeOrder(boolean isMade);
+    boolean isTakeOrder(boolean isMade);
     void setMakeOrder(boolean isMade);
     void setTakeOrder(boolean isTake);
-    Order makeOrder(ArrayList<Product> orderList);
+    Order makeOrder(ArrayList<String> orderList);
 }

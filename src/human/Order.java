@@ -10,10 +10,13 @@ public class Order {
     private Human buyer;
     private double price;
 
-    public Order(ArrayList<Product> orderList, double price) {  //конструктор принимает лист продкутов и цену
-        this.orderList = orderList;
-        this.price = price;
+    public Order(ArrayList<Product> listShopping, double price) {
     }
+
+//    public Order(ArrayList<Product> orderList, double price) {  //конструктор принимает лист продкутов и цену
+//        this.orderList = orderList;
+//        this.price = price;
+//    }
 
     public double getPrice() {return price;}
     public void setPrice(double price) {this.price = price;}
@@ -25,9 +28,9 @@ public class Order {
     @Override
     public String toString() {
         return "Order{" +
-                "orderList=" + orderList +
-                ", buyer=" + buyer +
-                ", price=" + price +
+                "buyer=" + buyer +
+                ",\n priceHuman=" + price +
+                ",\n orderList=" + orderList+
                 '}';
     }
 }

@@ -1,5 +1,4 @@
 package Vending;
-
 import java.util.ArrayList;
 
 
@@ -9,9 +8,6 @@ public abstract class Product {
     private double price; // цена товара
     private int quantity; // кол-вo
 
-    public void setListProduct(ArrayList<Product> listProduct) {
-        this.listProduct = listProduct;
-    }
 
     public Product(String name, double price, int quantity) {
         this.name = name;
@@ -19,6 +15,9 @@ public abstract class Product {
         this.quantity = quantity;
     }
     ArrayList<Product> listProduct = new ArrayList<>();
+    public void setListProduct(ArrayList<Product> listProduct) {
+        this.listProduct = listProduct;
+    }
     public void initProduct(ArrayList<Product> list){
         listProduct = list;
     }

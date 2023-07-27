@@ -1,11 +1,12 @@
 package Vending;
 
 public class HotBeverage extends Beverage {
-    double temperature; // температура
+    private double temperature; // температура
     public HotBeverage(String name, double price, int quantity, double volume, double temperature) {
         super(name, price, quantity, volume);
         this.temperature = temperature;
     }
+
 
     @Override
     public String toString() {

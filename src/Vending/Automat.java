@@ -5,11 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Automat {
-    List<Product> listProduct;
+    private List<Product> listProduct;
 
-    public Automat() {
-
-    }
+    public Automat() {}
     public void initProduct(List<Product> addListProduct) {
         this.listProduct = addListProduct;
     }
@@ -19,29 +17,25 @@ public class Automat {
 
 
 
-    public Product getProduct(String name) { // поиск еды по названию продукта
-        Product temp = null;
+    public Product getProduct(String name) {
         for (Product i : listProduct) {
-            if (i instanceof Food) {
                 if (i.getName().equals(name)) {
-                    temp = i;
+                    return i;
                 }
             }
+        return null;
         }
-        return temp;
 
-    }
     //  пройти по продуктам, проверить наличие (>0), "запомнить цену"
     public Order createOrder(ArrayList<Product> listShopping){
         double price = 0;
-
         for (Product product:listShopping) {
             if(product.getQuantity() > 0){
                 price += product.getPrice();
             }
         }
-        Order order = new Order(listShopping,price);
-        return order;
+
+        return new Order(listShopping, price);
     }
 
     @Override

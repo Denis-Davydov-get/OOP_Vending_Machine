@@ -1,10 +1,9 @@
 package Vending;
 
+import java.util.Calendar;
+
 public class Food extends Product{
-    public double weight; // масса в граммах
-    public String name; // название товара
-    public double price; //цена товара
-    public int quantity; // кол-во товара
+    private double weight; // масса в граммах
 
     public Food(String name, double price, int quantity, double weight) {
         super(name, price, quantity);
