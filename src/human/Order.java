@@ -1,8 +1,5 @@
 package human;
-
-
 import Vending.Product;
-
 import java.util.ArrayList;
 
 public class Order {
@@ -38,6 +35,6 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Human:"+ buyer +"\nProduct list:\n"+orderList+"\nCost:"+price;
+        return "Automat:"+ buyer +"\nProduct list:\n"+orderList+"\nCost:"+price;
     }
 }

@@ -1,6 +1,6 @@
 package Vending;
 import java.util.ArrayList;
-
+import java.util.Comparator;
 
 
 public abstract class Product {
@@ -58,4 +58,6 @@ public abstract class Product {
     public ArrayList<Product> getListProduct() {
         return listProduct;
     }
+
+    public abstract int compare(Product o1, Product o2);
 }

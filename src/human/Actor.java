@@ -1,5 +1,4 @@
 package human;
-import java.util.List;
 
 public abstract class Actor implements ActorBehavoir {
     protected String name;

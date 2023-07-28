@@ -1,8 +1,8 @@
 package Vending;
 
-import java.util.ArrayList;
+import java.util.Comparator;
 
-public abstract class Beverage extends Product {
+public abstract class Beverage extends Product implements Comparator<Beverage> {
     double volume; // объем
 
     public Beverage(String name, double price, int quantity, double volume) {
@@ -22,4 +22,6 @@ public abstract class Beverage extends Product {
                 ", volume=" + getVolume() +
                 '}';
     }
+
+    public abstract Comparator<Beverage> reversed();
 }

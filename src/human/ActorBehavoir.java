@@ -1,5 +1,4 @@
 package human;
-import java.util.ArrayList;
 
 public interface ActorBehavoir {
 
