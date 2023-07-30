@@ -8,7 +8,7 @@ import java.util.Iterator;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Product> allProduct = new ArrayList<>();
+        ArrayList<Food> allProduct = new ArrayList<>();
         Food Snikers = new Food("Snikers", 80, 5, 80);
         Food Bounti = new Food("Bounti", 80, 5, 82);
         Food MilkyWay = new Food("Milky Way", 59, 5, 52);
@@ -20,18 +20,18 @@ public class Main {
         allProduct.add(Mars);
         allProduct.add(Nuts);
 
-        ArrayList<Product> hotBeverage = new ArrayList<>();
+        ArrayList<HotBeverage> hotBeverage = new ArrayList<>();
         HotBeverage Lipton = new HotBeverage("Lipton", 30, 5, 0.2, 70);
         HotBeverage BlackCart = new HotBeverage("BlackCart", 50, 5, 0.2, 70);
         hotBeverage.add(Lipton);
         hotBeverage.add(BlackCart);
 
         Automat automatFood = new Automat(); // атомат с едой
-        automatFood.initProduct(allProduct);
+        automatFood.initFood(allProduct);
 //        System.out.println("food -" + automatFood.getListProduct().toString());
 
         HotBeverageAutomat beverageAutomat = new HotBeverageAutomat(); // атомат с напитками
-        beverageAutomat.initProduct(hotBeverage);
+        beverageAutomat.initHotBeverage(hotBeverage);
 //        System.out.println("beverage - " + beverageAutomat.getListProduct().toString());
 
         ArrayList<String> orderListHuman = new ArrayList<>(); //список продуктов заказчика
@@ -45,5 +45,16 @@ public class Main {
 //        System.out.println(denisOrder.toString());
         System.out.println();
 
+        hotBeverage.sort(new BeverageComparator());
+        System.out.println(hotBeverage);
+
+        allProduct.sort(new FoodComparator());
+        System.out.println(allProduct);
+
+        hotBeverage.sort(new HotBeverageComparator());
+        System.out.println(hotBeverage);
+
     }
+
+
 }

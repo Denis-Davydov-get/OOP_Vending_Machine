@@ -7,7 +7,7 @@ public class HotBeverageAutomat extends Automat {
     ArrayList<HotBeverage> productList=new ArrayList<>();
     public HotBeverageAutomat() {
     }
-    public void initProduct(ArrayList<HotBeverage> productList){
+    public void initHotBeverage(ArrayList<HotBeverage> productList){
         this.productList=productList;
     }
     public List<Product> getListProductHotBeverage() { // фильтрует лист продуктов только по напиткам
@@ -21,9 +21,9 @@ public class HotBeverageAutomat extends Automat {
     }
 
     public Product getProduct(String name, double volume, int temperature) {
-        for (Product product : productList) {
+        for (HotBeverage product : productList) {
             if (product instanceof HotBeverage) {
-                if(product.getName().equals(name) && ((HotBeverage) product).getTemperature() == temperature&&((HotBeverage) product).getVolume()==volume)
+                if(product.getName().equals(name) && (product).getTemperature() == temperature&&(product).getVolume()==volume)
                     return  product;
             }
         }

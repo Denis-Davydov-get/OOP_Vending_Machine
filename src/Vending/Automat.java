@@ -5,20 +5,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Automat {
-    private List<Product> listProduct;
+    private List<Food> foodList;
 
     public Automat() {}
-    public void initProduct(List<Product> addListProduct) {
-        this.listProduct = addListProduct;
+
+    public void initFood(List<Food> addListProduct) {
+        this.foodList = addListProduct;
     }
-    public List<Product> getListProduct() {
-        return listProduct;
+    public List<Food> getListProduct() {
+        return foodList;
     }
 
 
 
-    public Product getProduct(String name) {
-        for (Product i : listProduct) {
+    public Food getProduct(String name) {
+        for (Food i : foodList) {
                 if (i.getName().equals(name)) {
                     return i;
                 }
@@ -27,7 +28,7 @@ public class Automat {
         }
 
     //  пройти по продуктам, проверить наличие (>0), "запомнить цену"
-    public Order createOrder(ArrayList<Product> nameProductHuman, Human human){
+    public Order createOrder(ArrayList<Food> nameProductHuman, Human human){
         double sum=0;
         for (Product prod : nameProductHuman) {
             if(getProduct(prod.getName()).getQuantity()>0){
@@ -44,11 +45,23 @@ public class Automat {
 
         return order;
     }
+    public void initFood(ArrayList<Food> productList){
+        this.foodList=productList;
+    }
 
     @Override
     public String toString() {
         return "Automat{" +
-                "listProduct=" + listProduct +
+                "listProduct=" + foodList +
                 '}';
+    }
+    public Product getProduct(String name, double volume, int temperature) {
+        for (Food product : foodList) {
+            if (product instanceof Food) {
+                if(product.getName().equals(name) && (product).getPrice() == product.getPrice()&&(product).getQuantity()== product.getQuantity())
+                    return  product;
+            }
+        }
+        return null;
     }
 }

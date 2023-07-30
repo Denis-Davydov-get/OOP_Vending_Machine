@@ -1,13 +1,14 @@
 package human;
+import Vending.Food;
 import Vending.Product;
 import java.util.ArrayList;
 
 public class Order {
-    private ArrayList<Product> orderList;
+    private ArrayList<Food> orderList;
     private Human buyer;
     private double price;
 
-    public Order(ArrayList<Product> orderList) {
+    public Order(ArrayList<Food> orderList) {
         /**Конструктор для создания по листу, для методов
          * orderList - список продуктов для заказа*/
         this.orderList = orderList;
@@ -16,7 +17,7 @@ public class Order {
         /**Конструктор для создания по листу, для методов*/
     }
 
-    public Order(ArrayList<Product> orderList, Human buyer) {
+    public Order(ArrayList<Food> orderList, Human buyer) {
         this.orderList = orderList;
         this.buyer = buyer;
 
@@ -28,8 +29,8 @@ public class Order {
 
     public double getPrice(double sum) {return price;}
     public void setPrice(double price) {this.price = price;}
-    public ArrayList<Product> getOrderList() {return orderList;}
-    public void setOrderList(ArrayList<Product> orderList) {this.orderList = orderList;}
+    public ArrayList<Food> getOrderList() {return orderList;}
+    public void setOrderList(ArrayList<Food> orderList) {this.orderList = orderList;}
     public Human getBuyer() {return buyer;}
     public void setBuyer(Human buyer) {this.buyer = buyer;}
 

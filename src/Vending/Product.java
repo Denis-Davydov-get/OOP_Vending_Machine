@@ -1,13 +1,12 @@
 package Vending;
 import java.util.ArrayList;
-import java.util.Comparator;
 
 
 public abstract class Product {
     private String name; // название товара
     private double price; // цена товара
     private int quantity; // кол-вo
-
+    private ArrayList<Product> productList = new ArrayList<>();
 
     public Product(String name, double price, int quantity) {
         this.name = name;
@@ -22,15 +21,7 @@ public abstract class Product {
         listProduct = list;
     }
 
-    @Override
-    public String toString() {
-        return "Vending.Product{" +
-                "name='" + name + '\'' +
-                ", price=" + getPrice() +
-                ", quantity=" + getQuantity() +
-                ", listProduct=" + listProduct +
-                '}';
-    }
+
     public String getName() {
         return name;
     }
@@ -58,6 +49,14 @@ public abstract class Product {
     public ArrayList<Product> getListProduct() {
         return listProduct;
     }
+    @Override
+    public String toString() {
+        return "Vending.Product{" +
+                "name='" + name + '\'' +
+                ", price=" + getPrice() +
+                ", quantity=" + getQuantity() +
+                ", listProduct=" + listProduct +
+                '}';
+    }
 
-    public abstract int compare(Product o1, Product o2);
 }

@@ -15,24 +15,33 @@ public class Human extends Actor implements ActorBehavoir {
     }
 
     public void findNearestautomat(){
-        ArrayList<Product> allProduct = new ArrayList<>();
-        allProduct.add(new Food("Snikers",80,5,80));
-        allProduct.add(new Food("Bounti",80,5,82));
-        allProduct.add(new Food("Milky Way",59,5,52));
-        allProduct.add(new Food("Mars",79,5,82));
-        allProduct.add(new Food("Батончик Nuts",59,5,66));
-        allProduct.add(new HotBeverage("Lipton", 30, 5, 0.2, 70));
-        allProduct.add(new HotBeverage("BlackCart", 50, 5, 0.2, 70));
+        ArrayList<Food> allProduct = new ArrayList<>();
+        Food Snikers = new Food("Snikers", 80, 5, 80);
+        Food Bounti = new Food("Bounti", 80, 5, 82);
+        Food MilkyWay = new Food("Milky Way", 59, 5, 52);
+        Food Mars = new Food("Mars", 79, 5, 82);
+        Food Nuts = new Food("Батончик Nuts", 59, 5, 66);
+        allProduct.add(Snikers);
+        allProduct.add(Bounti);
+        allProduct.add(MilkyWay);
+        allProduct.add(Mars);
+        allProduct.add(Nuts);
+
+        ArrayList<HotBeverage> hotBeverage = new ArrayList<>();
+        HotBeverage Lipton = new HotBeverage("Lipton", 30, 5, 0.2, 70);
+        HotBeverage BlackCart = new HotBeverage("BlackCart", 50, 5, 0.2, 70);
+        hotBeverage.add(Lipton);
+        hotBeverage.add(BlackCart);
 
         Automat automat = new Automat();
-        automat.initProduct(allProduct);
+        automat.initFood(allProduct);
         this.nearestAutomat = automat;
     }
     // дописать объем и температуру
 
     public Order makeOrder(List<String> productHuman) {
-        ArrayList<Product> shopingList = new ArrayList<>();
-        Product nameProduct;
+        ArrayList<Food> shopingList = new ArrayList<>();
+        Food nameProduct;
         for (String name: productHuman) {
             nameProduct = nearestAutomat.getProduct(name);
             if(nameProduct != null){

@@ -1,6 +1,7 @@
 package Vending;
 
 import java.util.Comparator;
+import java.util.Iterator;
 
 public class HotBeverage extends Beverage {
     private double temperature; // температура
@@ -21,22 +22,10 @@ public class HotBeverage extends Beverage {
                 '}';
     }
 
-    @Override
-    public int compare(Product o1, Product o2) {
-        return 0;
-    }
-
-    @Override
-    public int compare(Beverage o1, Beverage o2) {
-        return o1.getName().compareTo(o2.getName());
-    }
-
-    @Override
-    public Comparator<Beverage> reversed() {
-        return null;
-    }
 
     public double getTemperature() {
         return temperature;
     }
+
+
 }
