@@ -3,7 +3,7 @@ import Vending.Food;
 import Vending.Product;
 import java.util.ArrayList;
 
-public class Order {
+public class Order implements Comparable<Product>{
     private ArrayList<Food> orderList;
     private Human buyer;
     private double price;
@@ -37,5 +37,11 @@ public class Order {
     @Override
     public String toString() {
         return "Automat:"+ buyer +"\nProduct list:\n"+orderList+"\nCost:"+price;
+    }
+
+    @Override
+    public int compareTo(Product o) {
+        if(o.getQuantity() > 0) return o.getQuantity();
+        return 0;
     }
 }

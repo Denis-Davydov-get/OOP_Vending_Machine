@@ -9,7 +9,7 @@ public class Human extends Actor implements ActorBehavoir {
     private double money; // деньги
     private Automat nearestAutomat; // ближайший автомат
 
-    public Human(String name, double money) {
+    public Human(String name, int quanlity, double money) {
         super(name);
         this.money = money;
     }

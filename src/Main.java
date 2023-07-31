@@ -56,6 +56,9 @@ public class Main {
         hotBeverage.sort(new HotBeverageComparator());
         System.out.println(hotBeverage);
 
+        System.out.println(denisOrder.compareTo(Mars));
+
+
 
     }
 

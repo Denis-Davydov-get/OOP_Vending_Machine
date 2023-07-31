@@ -1,10 +1,12 @@
 package Vending;
+import Vending.Iterator.BeverageAutomatIterator;
 import human.Human;
 import human.Order;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class Automat {
+public class Automat implements Iterable<Product> {
     private List<Food> foodList;
 
     public Automat() {}
@@ -62,6 +64,12 @@ public class Automat {
                     return  product;
             }
         }
+        return null;
+    }
+
+
+    @Override
+    public Iterator<Product> iterator() {
         return null;
     }
 }

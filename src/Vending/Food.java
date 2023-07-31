@@ -1,12 +1,9 @@
 package Vending;
 
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
 
 public class Food extends Product {
     private double weight; // масса в граммах
-    private final ArrayList<Product> listFood = getListProduct();
 
 
     public Food(String name, double price, int quantity, double weight) {
