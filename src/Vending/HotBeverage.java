@@ -1,8 +1,5 @@
 package Vending;
 
-import java.util.Comparator;
-import java.util.Iterator;
-
 public class HotBeverage extends Beverage {
     private double temperature; // температура
     public HotBeverage(String name, double price, int quantity, double volume, double temperature) {

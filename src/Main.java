@@ -1,19 +1,21 @@
 import Vending.*;
+import Vending.Coparator.BeverageComparator;
+import Vending.Coparator.FoodComparator;
+import Vending.Coparator.HotBeverageComparator;
 import human.Human;
 import human.Order;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
+
 
 
 public class Main {
     public static void main(String[] args) {
         ArrayList<Food> allProduct = new ArrayList<>();
-        Food Snikers = new Food("Snikers", 80, 5, 80);
-        Food Bounti = new Food("Bounti", 80, 5, 82);
-        Food MilkyWay = new Food("Milky Way", 59, 5, 52);
-        Food Mars = new Food("Mars", 79, 5, 82);
-        Food Nuts = new Food("Батончик Nuts", 59, 5, 66);
+        Food Snikers = new Food("Snikers", 80, 10, 80);
+        Food Bounti = new Food("Bounti", 80, 9, 82);
+        Food MilkyWay = new Food("Milky Way", 59, 8, 52);
+        Food Mars = new Food("Mars", 79, 7, 82);
+        Food Nuts = new Food("Батончик Nuts", 59, 3, 66);
         allProduct.add(Snikers);
         allProduct.add(Bounti);
         allProduct.add(MilkyWay);
@@ -21,8 +23,8 @@ public class Main {
         allProduct.add(Nuts);
 
         ArrayList<HotBeverage> hotBeverage = new ArrayList<>();
-        HotBeverage Lipton = new HotBeverage("Lipton", 30, 5, 0.2, 70);
-        HotBeverage BlackCart = new HotBeverage("BlackCart", 50, 5, 0.2, 70);
+        HotBeverage Lipton = new HotBeverage("Lipton", 30, 10, 0.2, 70);
+        HotBeverage BlackCart = new HotBeverage("BlackCart", 50, 8, 0.2, 70);
         hotBeverage.add(Lipton);
         hotBeverage.add(BlackCart);
 
@@ -53,6 +55,7 @@ public class Main {
 
         hotBeverage.sort(new HotBeverageComparator());
         System.out.println(hotBeverage);
+
 
     }
 

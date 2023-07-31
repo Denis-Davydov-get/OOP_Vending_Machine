@@ -1,8 +1,7 @@
 package Vending;
 
-import java.util.Comparator;
 
-public class Beverage extends Product {
+public class Beverage extends Product{
     double volume; // объем
 
     public Beverage(String name, double price, int quantity, double volume) {
@@ -22,4 +21,5 @@ public class Beverage extends Product {
                 ", volume=" + getVolume() +
                 '}';
     }
+
 }
