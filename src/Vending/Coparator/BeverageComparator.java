@@ -2,6 +2,7 @@ package Vending.Coparator;
 
 import Vending.Beverage;
 import java.util.Comparator;
+import java.util.Scanner;
 
 public class BeverageComparator implements Comparator<Beverage> {
 

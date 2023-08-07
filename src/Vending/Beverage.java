@@ -22,4 +22,9 @@ public class Beverage extends Product{
                 '}';
     }
 
+
+    public Automat addProduct(Automat automat, Product product) {
+        automat.setAddProduct(product);
+        return automat;
+    }
 }

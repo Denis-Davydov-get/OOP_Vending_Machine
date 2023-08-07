@@ -1,10 +1,7 @@
 package Vending;
 
-import java.util.ArrayList;
-
-public class Food extends Product {
+public class Food extends Product{
     private double weight; // масса в граммах
-
 
     public Food(String name, double price, int quantity, double weight) {
         super(name, price, quantity);

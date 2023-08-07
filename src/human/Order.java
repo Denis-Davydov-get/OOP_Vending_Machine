@@ -1,45 +1,34 @@
 package human;
-import Vending.Food;
+
 import Vending.Product;
-
-import java.awt.color.ProfileDataException;
 import java.util.ArrayList;
-import java.util.Comparator;
 
-public class Order {
-    private ArrayList<Food> orderList;
+public class Order <T extends Product>{
+    private ArrayList<T> orderList;
     private Human buyer;
     private double price;
 
-    public Order(ArrayList<Food> orderList){
-        /**Конструктор для создания по листу, для методов
-         * orderList - список продуктов для заказа*/
-        this.orderList = orderList;
-
-    }public Order() {
-        /**Конструктор для создания по листу, для методов*/
-    }
-
-    public Order(ArrayList<Food> orderList, Human buyer) {
+    public Order(ArrayList<T> orderList, Human buyer, double price) {
         this.orderList = orderList;
         this.buyer = buyer;
-
+        this.price = price;
     }
-    //    public Order(ArrayList<Product> orderList, double price) {  //конструктор принимает лист продкутов и цену
-//        this.orderList = orderList;
-//        this.price = price;
-//    }
+
 
     public double getPrice(double sum) {return price;}
     public void setPrice(double price) {this.price = price;}
-    public ArrayList<Food> getOrderList() {return orderList;}
-    public void setOrderList(ArrayList<Food> orderList) {this.orderList = orderList;}
+
+    public ArrayList<T> getOrderList() {return orderList;}
+    public void setOrderList(ArrayList<T> orderList) {this.orderList = orderList;}
+
     public Human getBuyer() {return buyer;}
     public void setBuyer(Human buyer) {this.buyer = buyer;}
 
     @Override
     public String toString() {
-        return "Automat:"+ buyer +"\nProduct list:\n"+orderList+"\nCost:"+price;
+        return "Заказчик:"+ buyer.name +"\n" +
+                "Список заказа: \n"+orderList+
+                "\nCost:"+price;
     }
 
 

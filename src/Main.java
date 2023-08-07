@@ -1,62 +1,64 @@
 import Vending.*;
-import Vending.Coparator.BeverageComparator;
-import Vending.Coparator.FoodComparator;
-import Vending.Coparator.HotBeverageComparator;
-import Vending.Iterator.FoodIterator;
 import human.Human;
 import human.Order;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
 
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Food> allFood = new ArrayList<>();
-        Food Snikers = new Food("Snikers", 80, 10, 80);
-        Food Bounti = new Food("Bounti", 80, 9, 82);
-        Food MilkyWay = new Food("Milky Way", 59, 8, 52);
-        Food Mars = new Food("Mars", 79, 7, 82);
-        Food Nuts = new Food("Батончик Nuts", 59, 3, 66);
+//Создание и заполнение автомата с едой
+        Automat automatFood = new Automat(); // автомат с едой
+        ArrayList<Product> allFood = new ArrayList<>();
+        Product potato = new Food("Картошка", 50, 3, 50);
+        Product Snikers = new Food("Snikers", 80, 10, 80);
+        Product Bounti = new Food("Bounti", 80, 9, 82);
+        Product MilkyWay = new Food("Milky Way", 59, 8, 52);
+        Product Mars = new Food("Mars", 79, 7, 82);
+        Product Nuts = new Food("Батончик Nuts", 59, 3, 66);
         allFood.add(Snikers);
         allFood.add(Bounti);
         allFood.add(MilkyWay);
         allFood.add(Mars);
         allFood.add(Nuts);
 
-        ArrayList<HotBeverage> hotBeverage = new ArrayList<>();
+//инициализация листа с продуктами
+        automatFood.initProduct(allFood);
+//автомат с напитками
+        HotBeverageAutomat beverageAutomat = new HotBeverageAutomat();
+        ArrayList<HotBeverage> hotBeverageArrayList = new ArrayList<>();
         HotBeverage Lipton = new HotBeverage("Lipton", 30, 10, 0.2, 70);
         HotBeverage BlackCart = new HotBeverage("BlackCart", 50, 8, 0.2, 70);
-        hotBeverage.add(Lipton);
-        hotBeverage.add(BlackCart);
-
-        Automat automatFood = new Automat(); // атомат с едой
-        automatFood.initFood(allFood);
-        System.out.println("food -" + automatFood.getListProduct().toString());
-
-        HotBeverageAutomat beverageAutomat = new HotBeverageAutomat(); // атомат с напитками
-        beverageAutomat.initHotBeverage(hotBeverage);
+//вывод автоматов
+//        System.out.println("Продукты в автомате с едой -" + automatFood.getListProduct().toString());
 //        System.out.println("beverage - " + beverageAutomat.getListProduct().toString());
-
-        ArrayList<String> orderListHuman = new ArrayList<>(); //список продуктов заказчика
+//Добавление любого продукта в автомат с продуктами
+        AutomatServise automatServise = new AutomatService();
+        automatServise.addProduct(automatFood, Lipton);
+        automatFood.initProduct(allFood);
+        System.out.println(allFood);
+//список продуктов заказчика
+        ArrayList<String> orderListHuman = new ArrayList<>();
+        orderListHuman.add("Snikers");
+        orderListHuman.add("Mars");
+        orderListHuman.add("Картошка");
         orderListHuman.add("Lipton");
-        orderListHuman.add("BlackCart");
-
+//Создание покупателя
         Human denis = new Human("Денис",500);
         denis.findNearestautomat();
-
+//создание и вывод заказа
         Order denisOrder = denis.makeOrder(orderListHuman);
-//        System.out.println(denisOrder.toString());
-        System.out.println();
+        System.out.println(denisOrder.toString());
 
-        hotBeverage.sort(new BeverageComparator());
-        System.out.println(hotBeverage);
+//сортировка по количеству
+//        hotBeverage.sort(new BeverageComparator());
+//        System.out.println(hotBeverage);
 
-        allFood.sort(new FoodComparator());
-        System.out.println(allFood);
+//        allFood.sort(new FoodComparator());
+//        System.out.println(allFood);
 
-        hotBeverage.sort(new HotBeverageComparator());
-        System.out.println(hotBeverage);
+//        hotBeverage.sort(new HotBeverageComparator());
+//        System.out.println(hotBeverage);
+
 
 
     }

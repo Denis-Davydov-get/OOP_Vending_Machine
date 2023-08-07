@@ -5,7 +5,7 @@ import Vending.Automat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Human extends Actor implements ActorBehavoir {
+public class Human<H> extends Actor implements ActorBehavoir {
     private double money; // деньги
     private Automat nearestAutomat; // ближайший автомат
 
@@ -15,33 +15,26 @@ public class Human extends Actor implements ActorBehavoir {
     }
 
     public void findNearestautomat(){
-        ArrayList<Food> allProduct = new ArrayList<>();
-        Food Snikers = new Food("Snikers", 80, 5, 80);
-        Food Bounti = new Food("Bounti", 80, 5, 82);
-        Food MilkyWay = new Food("Milky Way", 59, 5, 52);
-        Food Mars = new Food("Mars", 79, 5, 82);
-        Food Nuts = new Food("Батончик Nuts", 59, 5, 66);
-        allProduct.add(Snikers);
-        allProduct.add(Bounti);
-        allProduct.add(MilkyWay);
-        allProduct.add(Mars);
-        allProduct.add(Nuts);
+        ArrayList<Product> allProduct = new ArrayList<>();
+        allProduct.add(new Food("Snikers", 80, 10, 80));
+        allProduct.add(new Food("Bounti", 80, 9, 82));
+        allProduct.add(new Food("Milky Way", 59, 8, 52));
+        allProduct.add(new Food("Mars", 79, 7, 82));
+        allProduct.add(new Food("Батончик Nuts", 59, 3, 66));
+        allProduct.add(new Food("Картошка", 50, 3, 50));
 
-        ArrayList<HotBeverage> hotBeverage = new ArrayList<>();
-        HotBeverage Lipton = new HotBeverage("Lipton", 30, 5, 0.2, 70);
-        HotBeverage BlackCart = new HotBeverage("BlackCart", 50, 5, 0.2, 70);
-        hotBeverage.add(Lipton);
-        hotBeverage.add(BlackCart);
+        ArrayList<HotBeverage> hotBeverageArrayList = new ArrayList<>();
+        hotBeverageArrayList.add(new HotBeverage("Lipton", 30, 10, 0.2, 70));
+        hotBeverageArrayList.add(new HotBeverage("BlackCart", 50, 8, 0.2, 70));
 
         Automat automat = new Automat();
-        automat.initFood(allProduct);
+        automat.initProduct(allProduct);
         this.nearestAutomat = automat;
     }
-    // дописать объем и температуру
 
     public Order makeOrder(List<String> productHuman) {
-        ArrayList<Food> shopingList = new ArrayList<>();
-        Food nameProduct;
+        ArrayList<Product> shopingList = new ArrayList<>();
+        Product nameProduct;
         for (String name: productHuman) {
             nameProduct = nearestAutomat.getProduct(name);
             if(nameProduct != null){
@@ -49,7 +42,7 @@ public class Human extends Actor implements ActorBehavoir {
             }
         }
         setMakeOrder(true);
-        return nearestAutomat.createOrder(shopingList,this);
+        return nearestAutomat.createOrder(shopingList, this);
     }
     public void setMoney(double money) {this.money = money;}
     public Automat getNearestAutomat() {return nearestAutomat;}
@@ -71,8 +64,8 @@ public class Human extends Actor implements ActorBehavoir {
     public String toString() {
         return "Human{" +
                 "money=" + money +
-                ", nearestAutomat=" + nearestAutomat +
-                ", name='" + name + '\'' +
+                ", Ближайший автомат >=" + nearestAutomat +
+                ", Имя заказчика='" + name + '\'' +
                 ", isMakeOrder=" + isMakeOrder +
                 ", isTakeOrder=" + isTakeOrder +
                 '}';

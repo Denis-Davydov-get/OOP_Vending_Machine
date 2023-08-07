@@ -2,7 +2,7 @@ package Vending;
 
 import java.util.ArrayList;
 
-public class HotBeverage extends Beverage {
+public class HotBeverage extends Beverage implements AutomatServise<Automat, Product>{
     private double temperature; // температура
     ArrayList<Beverage> beverageArrayList = new ArrayList<>();
 
@@ -35,5 +35,9 @@ public class HotBeverage extends Beverage {
                 ", volume=" + getVolume() +
                 ", temperature=" + temperature +
                 '}';
+    }
+    public Automat addProduct(Automat A, Product product) {
+        A.setAddProduct(product);
+        return A;
     }
 }

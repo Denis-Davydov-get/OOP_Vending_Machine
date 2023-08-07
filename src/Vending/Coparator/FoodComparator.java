@@ -1,12 +1,13 @@
 package Vending.Coparator;
 import Vending.Food;
+import Vending.Product;
 
 import java.util.Comparator;
 
-public class FoodComparator implements Comparator<Food> {
+public class FoodComparator implements Comparator<Product> {
 
     @Override
-    public int compare(Food o1, Food o2) {
+    public int compare(Product o1, Product o2) {
         if (o1.getQuantity() > o2.getQuantity()) {
             return 1;
         }

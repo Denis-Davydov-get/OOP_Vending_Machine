@@ -1,24 +1,15 @@
 package Vending;
-import Vending.Iterator.BeverageAutomatIterator;
 import human.Human;
 import human.Order;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
-public class Automat implements Iterator<Product> {
-    private List<Food> foodList;
-    public Automat() {}
+public class Automat implements AutomatServise<Automat, Product>{
+    private ArrayList<Product> productList;
+    public void initProduct(ArrayList<Product> productList){this.productList=productList;}
+    public ArrayList<Product> getListProduct() {return productList;}
 
-    public void initFood(List<Food> addListProduct) {
-        this.foodList = addListProduct;
-    }
-    public List<Food> getListProduct() {
-        return foodList;
-    }
-
-    public Food getProduct(String name) {
-        for (Food i : foodList) {
+    public Product getProduct(String name) {
+        for (Product i : productList) {
                 if (i.getName().equals(name)) {
                     return i;
                 }
@@ -26,8 +17,8 @@ public class Automat implements Iterator<Product> {
         return null;
         }
 
-    //  пройти по продуктам, проверить наличие (>0), "запомнить цену"
-    public Order createOrder(ArrayList<Food> nameProductHuman, Human human){
+    //  пройти по продуктам, проверить наличие (>0), "запомнить цену", если нет в наличии удалить из списка заказа
+    public Order createOrder(ArrayList<Product> nameProductHuman, Human human){
         double sum=0;
         for (Product prod : nameProductHuman) {
             if(getProduct(prod.getName()).getQuantity()>0){
@@ -36,26 +27,19 @@ public class Automat implements Iterator<Product> {
                 nameProductHuman.remove(prod);
             }
         }
-
-        Order order = new Order();
-        order.setPrice(sum);
-        order.setOrderList(nameProductHuman);
-        order.setBuyer(human);
-
+        Order order = new Order(nameProductHuman, human, sum);
         return order;
     }
-    public void initFood(ArrayList<Food> productList){
-        this.foodList=productList;
-    }
+
 
     @Override
     public String toString() {
         return "Automat{" +
-                "listProduct=" + foodList +
+                "listProduct=" + productList +
                 '}';
     }
     public Product getProduct(String name, double volume, int temperature) {
-        for (Food product : foodList) {
+        for (Product product : productList) {
             if (product instanceof Food) {
                 if(product.getName().equals(name) && (product).getPrice() == product.getPrice()&&(product).getQuantity()== product.getQuantity())
                     return  product;
@@ -64,26 +48,12 @@ public class Automat implements Iterator<Product> {
         return null;
     }
 
-    public List<Food> getFoodList() {
-        return foodList;
-    }
-
-    public void setFoodList(List<Food> foodList) {
-        this.foodList = foodList;
+    public void setAddProduct(Product addProduct) {productList.add(addProduct);
     }
 
     @Override
-    public boolean hasNext() {
-        return false;
-    }
-
-    @Override
-    public Product next() {
-        return null;
-    }
-
-    @Override
-    public void remove() {
-        Iterator.super.remove();
+    public Automat addProduct(Automat A, Product product) {
+         A.setAddProduct(product);
+        return A;
     }
 }

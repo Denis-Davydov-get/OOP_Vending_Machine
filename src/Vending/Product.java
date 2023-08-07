@@ -14,41 +14,20 @@ public abstract class Product{
         this.quantity = quantity;
     }
     ArrayList<Product> listProduct = new ArrayList<>();
-    public void setListProduct(ArrayList<Product> listProduct) {
-        this.listProduct = listProduct;
-    }
-    public void initProduct(ArrayList<Product> list){
-        listProduct = list;
-    }
+    public void setListProduct(ArrayList<Product> listProduct) {this.listProduct = listProduct;}
+    public void initProduct(ArrayList<Product> list){listProduct = list;}
 
+    public String getName() {return name;}
+    public void setName(String name) {this.name = name;}
 
-    public String getName() {
-        return name;
-    }
+    public double getPrice() {return price;}
+    public void setPrice(double price) {this.price = price;}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public int getQuantity() {return quantity;}
+    public void setQuantity(int quantity) {this.quantity = quantity;}
 
-    public double getPrice() {
-        return price;
-    }
+    public ArrayList<Product> getListProduct() {return listProduct;}
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public ArrayList<Product> getListProduct() {
-        return listProduct;
-    }
     @Override
     public String toString() {
         return "Vending.Product{" +
@@ -59,4 +38,7 @@ public abstract class Product{
                 '}';
     }
 
+    public void addProduct(Automat automat, Food food){
+        automat.setAddProduct(food);
+    };
 }
